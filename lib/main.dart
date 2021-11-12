@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:learn_bloc/counter_blolc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //create instace of counterBolc
+  final counterBloc = CounterBloc();
   int _counter = 0;
 
   void _incrementCounter() {
@@ -58,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
