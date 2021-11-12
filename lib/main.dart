@@ -55,15 +55,25 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+
+            //listen to stream
+            StreamBuilder(
+                stream: counterBloc.counterStream,
+                builder: (context, snapshot) {
+                  return Text(
+                    '$_counter',
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          //Add event to streamController
+          _counter++;
+          counterBloc.counterSink.add(_counter);
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
